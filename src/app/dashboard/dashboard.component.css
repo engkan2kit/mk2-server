@@ -1,0 +1,23 @@
+  
+.example-container {
+display: flex;
+flex-direction: column;
+max-height: 500px;
+min-width: 100%;
+}
+
+.container {
+  min-height: 100%;
+  width: 100%;
+  flex-wrap:wrap;
+}
+
+a {
+cursor: pointer;
+}
+
+.card-device {
+  width: 23%;
+  margin-bottom: 2%;
+}
+

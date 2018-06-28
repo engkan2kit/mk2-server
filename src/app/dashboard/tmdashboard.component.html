@@ -1,0 +1,50 @@
+<div>
+  <br>
+    <div class="container">
+        <div class="container">
+          <div fxLayout="column" fxLayoutGap="20px" fxLayout.gt-md="row"  fxLayoutAlign="space-around center" class="content">
+              <div class="blocks" >
+
+              </div>
+        </div>
+    </div>
+    <br>
+    <div class="container">
+      <div fxLayout="row" fxLayoutAlign="center center" class="content">
+        <mat-card class="card" >
+          <mat-card-title fxLayout.gt-xs="row" fxLayout.xs="column">
+            <h3>Monitoring Devices</h3>
+          </mat-card-title>
+          <mat-card-content>
+              <div class="example-container mat-elevation-z8">
+                  <mat-table #table [dataSource]="deviceListSource">
+                  <ng-container matColumnDef="address">
+                    <mat-header-cell *matHeaderCellDef> Address </mat-header-cell>
+                    <mat-cell *matCellDef="let element"> {{element.address}} </mat-cell>
+                  </ng-container>
+                    <ng-container matColumnDef="location">
+                      <mat-header-cell *matHeaderCellDef> Location </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.location}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="phases">
+                      <mat-header-cell *matHeaderCellDef> # of Phases </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.phases}} </mat-cell>
+                    </ng-container>
+                    <ng-container matColumnDef="unitId">
+                      <mat-header-cell *matHeaderCellDef> Unit ID</mat-header-cell>
+                      <mat-cell *matCellDef="let element">{{element.unitId}}</mat-cell>
+                    </ng-container>  
+                    <ng-container matColumnDef="unitPhase">
+                      <mat-header-cell *matHeaderCellDef> Phase </mat-header-cell>
+                      <mat-cell *matCellDef="let element"> {{element.unitPhase}} </mat-cell>
+                    </ng-container> 
+                    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                    <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                  </mat-table>
+              </div> 
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
