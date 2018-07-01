@@ -6,7 +6,7 @@ import { Chart } from 'chart.js';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
-  styleUrls: ['./dashboard.component.css', '../../../node_modules/material-design-icons/iconfont/material-icons.css']
+  styleUrls: ['./dashboard.component.scss', '../../../node_modules/material-design-icons/iconfont/material-icons.css']
 })
 
 export class DashboardComponent implements OnInit {

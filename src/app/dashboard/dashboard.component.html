@@ -1,18 +1,18 @@
 <div>
   <br>
-      <div class="container" fxLayout="row"  fxLayout.xs="column" fxLayoutWrap fxLayoutGap="0.5%" fxLayoutAlign="center" >
+      <div class="container" fxLayout="row"  fxLayout.xs="column" fxLayoutWrap  fxLayoutGap="0.5%" fxLayoutAlign="center center" >
         <mat-card class="card-device" *ngFor="let device of monitoringDevices">
-          <mat-card-header>
-            <mat-card-title class="card-device-title" fxLayout.gt-xs="row" fxLayout.xs="column">
+          <mat-card-header [ngClass]="{'card-device-header-offline' : 0>1, 'card-device-header-online' : 0<1}">
+            <mat-card-title  fxLayout.gt-xs="row" fxLayout.xs="column">
               Device Address: {{device.address}}
             </mat-card-title>
             <mat-card-subtitle>
               {{device.location}}
             </mat-card-subtitle>
+            <div fxFlex fxLayout fxLayoutAlign="flex-end center" >
+              <mat-icon class="icon" fxFlex fxLayout fxLayoutAlign="flex-end" >wifi</mat-icon>
+            </div>
         </mat-card-header>
-        <mat-card-content>
-          
-        </mat-card-content>
         </mat-card>
       </div>
 </div>

@@ -1,0 +1,32 @@
+@import '~@angular/material/theming';
+@import '../theme.scss';
+// Define a custom mixin that takes in the current theme
+.container {
+  min-height: 100%;
+  width: 100%;
+  flex-wrap:wrap;
+}
+
+.card-device {
+  min-width: 320px;
+  width: 20%;
+  margin-bottom: 0.5%;
+  padding: 0;
+}
+
+a {
+  cursor: pointer;
+}
+
+.card-device-header-online{
+  padding-top: 4%;
+  background-color: mat-color($primary);
+  color: $text-color;
+}
+
+.card-device-header-offline{
+  padding-top: 4%;
+  background-color: gray;
+}
+
+.material-icons.md-light { color: rgb(21, 247, 0); }

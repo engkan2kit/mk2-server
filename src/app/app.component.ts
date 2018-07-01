@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: [
-    './app.component.css', 
+    './app.component.scss', 
     '../../node_modules/material-design-icons/iconfont/material-icons.css'
   ]
 })
