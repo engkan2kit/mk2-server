@@ -1,6 +1,5 @@
-<div>
-  <br>
-      <div class="container" fxLayout="row"  fxLayout.xs="column" fxLayoutWrap  fxLayoutGap="0.5%" fxLayoutAlign="center center" >
+<div> <!--
+      <div class="container"  fxLayoutWrap  fxLayoutGap="20px" fxLayoutAlign="center center" >
         <mat-card class="card-device" *ngFor="let device of monitoringDevices">
           <mat-card-header [ngClass]="{'card-device-header-offline' : 0>1, 'card-device-header-online' : 0<1}">
             <mat-card-title  fxLayout.gt-xs="row" fxLayout.xs="column">
@@ -12,7 +11,26 @@
             <div fxFlex fxLayout fxLayoutAlign="flex-end center" >
               <mat-icon class="icon" fxFlex fxLayout fxLayoutAlign="flex-end" >wifi</mat-icon>
             </div>
-        </mat-card-header>
+          </mat-card-header>
+          <mat-card-content fxLayout="row">
+            <div flex fxLayout="row">
+                <div *ngIf="device.chart">
+                    <canvas id="canvas{{device.address }}">{{ device.chart }}</canvas>
+                </div> 
+            </div>
+            <div flex fxLayout="column">
+                <div flex>{{formatSI(device.v)}}V</div> 
+                <div flex>{{formatSI(device.a)}}A</div> 
+                <div flex>{{formatSI(device.w)}}W</div>
+                <div flex>{{formatSI(device.va)}}VA</div>
+                <div flex>{{formatSI(device.vareact)}}VAR</div>
+                <div flex>{{formatNumber(device.pf)}}pf</div>
+            </div>
+          </mat-card-content>
         </mat-card>
+      </div>
+      -->
+      <div class="container" fxLayout="row" fxLayoutGap= "10px grid" fxLayoutAlign="center center" >
+        <app-device *ngFor="let device of monitoringDevices" [deviceData]="device" ></app-device>
       </div>
 </div>

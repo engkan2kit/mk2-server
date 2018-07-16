@@ -1,0 +1,29 @@
+<mat-card class="card-device">
+  <mat-card-header [ngClass]="{'card-device-header-offline' : 0>1, 'card-device-header-online' : 0<1}">
+    <mat-card-title  fxLayout.gt-xs="row" fxLayout.xs="column">
+      Device Address: {{address}}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{location}}
+    </mat-card-subtitle>
+    <div fxFlex fxLayout fxLayoutAlign="flex-end center" >
+      <mat-icon class="icon" fxFlex fxLayout fxLayoutAlign="flex-end" >wifi</mat-icon>
+    </div>
+  </mat-card-header>
+  <mat-card-content fxLayout="row">
+    <div flex fxLayout="row">
+        <div >
+            <canvas id="canvas{{address}}" width="100%" height="100%">{{ chart }}</canvas>
+        </div> 
+        
+    </div>
+    <div flex fxLayout="column">
+        <div flex>{{v}}V</div> 
+        <div flex>{{a}}A</div> 
+        <div flex>{{w}}W</div>
+        <div flex>{{va}}VA</div>
+        <div flex>{{vareact}}VAR</div>
+        <div flex>{{pf}}pf</div>
+    </div>
+  </mat-card-content>
+</mat-card>

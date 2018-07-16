@@ -20,15 +20,66 @@ app.set('port', port);
  */
 
 var server = http.createServer(app);
-
+var io = require('socket.io').listen(server);
 /**
  * Listen on provided port, on all network interfaces.
  */
+var MonitoringDevice = require('../models/MonitoringDevice.js');
+
+/* Get All monitoring devices. */
+  
+  
+
+var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
+mongoose.connect('mongodb://localhost/mk2-data', {promiseLibrary: require('bluebird') })
+  .then(() =>  console.log('connection succesful'))
+  .catch((err) => console.error(err));
+
+ var cntr=0;
+function intervalFunc() {
+  io.emit("message",cntr.toString());
+  cntr=cntr+1;/*
+  */
+  MonitoringDevice.find({},{"_id":0,"__v":0},function(err,monDevices){
+    nodeDevices=[];
+    if(err) return next(err);
+    
+    for(var index in monDevices){
+      device=JSON.stringify(monDevices[index]);
+      device=JSON.parse(device);
+      rnd=Math.random()-0.5;
+      if (device.v!=null)
+        device.v=device.v+rnd*100;
+      rnd=Math.random()-0.5;
+      if (device.a!=null)
+        device.a=device.a+rnd*100;
+      if (device.w!=null)
+        device.w=device.w+rnd*200;
+      nodeDevices.push(device);
+      console.log(device);
+      
+    }
+    data={
+      timeStamp: Date.now.toString(),
+      nodes:nodeDevices
+    }
+    //console.log(data);
+    io.emit("realtime",data);
+  });
+  
+}
+
+setInterval(intervalFunc, 3000);
 
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
 
+
+io.on('connection', function(socket){
+  console.log('a user connected');
+});
 /**
  * Normalize a port into a number, string, or false.
  */

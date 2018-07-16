@@ -4,5 +4,11 @@ export interface MonitoringDevice {
     address: number;
     phases: number;
     unitId: number;
-    unitPhase:number;
+    unitPhase: number;
+    v: number;
+    a: number;
+    w: number;
+    va: number;
+    var: number;
+    pf: number;
 }

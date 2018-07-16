@@ -10,12 +10,14 @@ import { SettingsComponent } from './settings/settings.component';
 import { AppRoutingModule } from './app-routing.module';
 import { NodeServiceService } from './services/node-service.service';
 import { HttpClientModule }    from '@angular/common/http';
+import { DeviceComponent } from './device/device.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DashboardComponent,
-    SettingsComponent
+    SettingsComponent,
+    DeviceComponent
   ],
   imports: [
     BrowserModule,

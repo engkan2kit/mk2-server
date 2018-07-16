@@ -2,12 +2,16 @@
 @import '../theme.scss';
 // Define a custom mixin that takes in the current theme
 .container {
-  padding-top:10px;
+  padding-top:100px;
   min-height: 100%;
   width: 100%;
   flex-wrap:wrap;
 }
 
+canvas{
+  width:100% !important;
+  height:200 !important;
+}
 .card-device {
   min-width: 320px;
   width: 20%;
