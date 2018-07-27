@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as socketIo from 'socket.io-client';
 
-const SERVER_URL = 'http://localhost:3000';
+const SERVER_URL = 'http://192.168.1.18:3000';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +14,7 @@ export class NodeServiceService {
 
   monitoringDevice: MonitoringDevice[];
   constructor(private http: HttpClient) { }
-  private monitoringDeviceUrl = 'http://localhost:3000/api/monitoringDevice';  // URL to web api
+  private monitoringDeviceUrl = SERVER_URL+'/api/monitoringDevice';  // URL to web api
   getMonitoringDevices(): Observable<MonitoringDevice[]> {
     return this.http.get<MonitoringDevice[]>(this.monitoringDeviceUrl);
   }
@@ -41,9 +41,13 @@ export class NodeServiceService {
       });
   }
 
-  public onRealtime(): Observable<MonitoringDevice[]> {
-    return new Observable<MonitoringDevice[]>(observer => {
-        this.socket.on('realtime', (data) => observer.next(data.nodes));
+  public onRealtime(): Observable<MonitoringDevice> {
+    return new Observable<MonitoringDevice>(observer => {
+        this.socket.on('realtime', (data) => {
+            for(let node of data.nodes){
+                observer.next(node);
+            }
+        });
     });
 }
 

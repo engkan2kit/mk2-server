@@ -1,7 +1,9 @@
 import { Component, OnInit, Input,ViewChild,ElementRef } from '@angular/core';
 import { MonitoringDevice } from '../models/monitoringDevice';
 import { NodeServiceService } from '../services/node-service.service';
+import 'rxjs/add/operator/filter';
 import { Chart } from 'chart.js';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-device',
@@ -24,7 +26,7 @@ export class DeviceComponent implements OnInit {
   maxLoad=2000;
   canvas: any;
   ctx: any;
-  constructor(private nodeService: NodeServiceService) { }
+  constructor(private nodeService: NodeServiceService,  public router: Router) { }
 
   ngOnInit() { 
       console.log("re-instantiated "+this.deviceData.address);
@@ -67,25 +69,27 @@ export class DeviceComponent implements OnInit {
       }
     });
     this.childIoConnection = this.nodeService.onRealtime()
+      .filter(monitoringDevice => monitoringDevice.address==this.address)
       .subscribe(realtimeData => {
-        for (var index in realtimeData){
-            if (realtimeData[index].address==this.address){
-              this.location= realtimeData[index].location;
-              this.v=this.formatSI(realtimeData[index].v);
-              this.a=this.formatSI(realtimeData[index].a);
-              this.w=this.formatSI(realtimeData[index].w);
-              this.va=this.formatSI(realtimeData[index].va);
-              this.vareact=this.formatSI(realtimeData[index].var);
-              this.pf=this.formatNumber(realtimeData[index].pf);
-      
-              this.chart.data.datasets[0].data=[realtimeData[index].w, this.maxLoad-realtimeData[index].w];
-              this.chart.options.elements.center.text=Math.round(realtimeData[index].w*100/this.maxLoad)+"%";
-              this.chart.update();
-            }
-        }
+        this.location= realtimeData.location;
+        this.v=this.formatSI(realtimeData.v);
+        this.a=this.formatSI(realtimeData.a);
+        this.w=this.formatSI(realtimeData.w);
+        this.va=this.formatSI(realtimeData.va);
+        this.vareact=this.formatSI(realtimeData.var);
+        this.pf=this.formatNumber(realtimeData.pf);
+
+        this.chart.data.datasets[0].data=[realtimeData.w, this.maxLoad-realtimeData.w];
+        this.chart.options.elements.center.text=Math.round(realtimeData.w*100/this.maxLoad)+"%";
+        this.chart.update();
         
       });
   }
+
+  onDeviceClicked(){
+    this.router.navigate(['./device-details/'+this.address])
+  }
+
   formatSI(value: number): string{
     var resValue = 0;
     var result = "";

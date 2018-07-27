@@ -1,4 +1,4 @@
-<mat-card class="card-device">
+<mat-card class="card-device" (click)=onDeviceClicked()>
   <mat-card-header [ngClass]="{'card-device-header-offline' : 0>1, 'card-device-header-online' : 0<1}">
     <mat-card-title  fxLayout.gt-xs="row" fxLayout.xs="column">
       Device Address: {{address}}

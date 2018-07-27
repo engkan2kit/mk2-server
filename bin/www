@@ -56,12 +56,13 @@ function intervalFunc() {
         device.a=device.a+rnd*100;
       if (device.w!=null)
         device.w=device.w+rnd*200;
+      var date=new Date();
+      device.timestamp=date.getTime;
       nodeDevices.push(device);
       console.log(device);
       
     }
     data={
-      timeStamp: Date.now.toString(),
       nodes:nodeDevices
     }
     //console.log(data);

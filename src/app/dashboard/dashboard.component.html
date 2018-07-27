@@ -30,7 +30,7 @@
         </mat-card>
       </div>
       -->
-      <div class="container" fxLayout="row" fxLayoutGap= "10px grid" fxLayoutAlign="center center" >
+      <div class="container"  fxLayout="row wrap" fxLayoutGap= "5px grid" fxLayoutAlign="center center" >
         <app-device *ngFor="let device of monitoringDevices" [deviceData]="device" ></app-device>
       </div>
 </div>

@@ -5,7 +5,7 @@
   padding-top:100px;
   min-height: 100%;
   width: 100%;
-  flex-wrap:wrap;
+  //flex-wrap:wrap;
 }
 
 canvas{
@@ -13,8 +13,8 @@ canvas{
   height:200 !important;
 }
 .card-device {
-  min-width: 320px;
-  width: 20%;
+  min-width: 260px;
+  width: 30%;
   margin-bottom: 0.5%;
   padding: 0;
 }

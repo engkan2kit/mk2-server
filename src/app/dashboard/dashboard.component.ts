@@ -24,6 +24,7 @@ export class DashboardComponent implements OnInit {
     this.initIoConnection();
 
     Chart.pluginService.register({
+      id: 'p1',
       beforeDraw: function (chart) {
           var width = chart.chart.width,
               height = chart.chart.height,

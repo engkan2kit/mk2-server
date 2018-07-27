@@ -11,4 +11,5 @@ export interface MonitoringDevice {
     va: number;
     var: number;
     pf: number;
+    timestamp: Date;
 }

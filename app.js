@@ -19,8 +19,8 @@ mongoose.connect('mongodb://localhost/mk2-data', {promiseLibrary: require('blueb
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({'extended':'false'}));
-//app.use( express.static(path.join(__dirname, 'dist/angular-tour-of-heroes')));
-//app.use('/heroes', express.static(path.join(__dirname, 'dist/angular-tour-of-heroes')));
+app.use( express.static(path.join(__dirname, 'dist/mk2-server')));
+app.use('/', express.static(path.join(__dirname, 'dist/mk2-server')));
 //app.use('/api/heroes', hero);
 //app.use('/*',function(req, res) {
 //  res.sendfile(__dirname + '/dist/angular-tour-of-heroes/index.html');
@@ -29,13 +29,13 @@ app.use(bodyParser.urlencoded({'extended':'false'}));
 app.use(function (req, res, next) {
 
   // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:4200');
+  res.setHeader('Access-Control-Allow-Origin', '*');
 
   // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
   // Request headers you wish to allow
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
+  //res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
   // Set to true if you need the website to include cookies in the requests sent
   // to the API (e.g. in case you use sessions)

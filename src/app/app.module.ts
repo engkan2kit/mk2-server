@@ -11,13 +11,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { NodeServiceService } from './services/node-service.service';
 import { HttpClientModule }    from '@angular/common/http';
 import { DeviceComponent } from './device/device.component';
+import { DeviceDetailsComponent } from './device-details/device-details.component';
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     DashboardComponent,
     SettingsComponent,
-    DeviceComponent
+    DeviceComponent,
+    DeviceDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -29,6 +31,6 @@ import { DeviceComponent } from './device/device.component';
     HttpClientModule
   ],
   providers: [NodeServiceService],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent, DashboardComponent, DeviceComponent]
 })
 export class AppModule { }
